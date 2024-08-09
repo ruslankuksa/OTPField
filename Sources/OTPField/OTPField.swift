@@ -22,36 +22,34 @@ public struct OTPFieldView: View {
     }
     
     public var body: some View {
-        GeometryReader { proxy in
-            HStack {
-                ZStack {
-                    TextField("OTPField", text: $otpCode)
-                        .frame(width: 0, height: 0, alignment: .center)
-                        .focused($focus, equals: true)
-                        .keyboardType(.numberPad)
-                        .onChange(of: otpCode) { _ in
-                            handleInput()
-                            debugPrint(otpCode)
-                        }
-                    
-                    HStack(spacing: spacing) {
-                        ForEach(0..<otpLength, id: \.self) { index in
-                            ZStack {
-                                Rectangle()
-                                    .strokeBorder(Color.black, lineWidth: 1)
-                                    .frame(width: 40, height: 40)
-                                
-                                text(for: index)
-                            }
+        HStack {
+            ZStack {
+                TextField("OTPField", text: $otpCode)
+                    .frame(width: 0, height: 0, alignment: .center)
+                    .focused($focus, equals: true)
+                    .keyboardType(.numberPad)
+                    .onChange(of: otpCode) { _ in
+                        handleInput()
+                        debugPrint(otpCode)
+                    }
+                
+                HStack(spacing: spacing) {
+                    ForEach(0..<otpLength, id: \.self) { index in
+                        ZStack {
+                            Rectangle()
+                                .strokeBorder(Color.black, lineWidth: 1)
+                                .frame(width: 40, height: 40)
+                            
+                            text(for: index)
                         }
                     }
                 }
             }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal)
-            .onAppear {
-                focus = true
-            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal)
+        .onAppear {
+            focus = true
         }
     }
     
