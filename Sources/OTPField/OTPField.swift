@@ -10,10 +10,16 @@ public struct OTPFieldView: View {
         case underline
     }
     
-    public var otpLength = 6
-    public var spacing: CGFloat = 16
+    public var otpLength: Int
+    public var spacing: CGFloat
     @Binding public var otpCode: String
     @FocusState private var focus: Bool
+    
+    public init(otpLength: Int = 6, spacing: CGFloat = 16, otpCode: Binding<String>) {
+        self.otpLength = otpLength
+        self.spacing = spacing
+        self._otpCode = otpCode
+    }
     
     public var body: some View {
         GeometryReader { proxy in
