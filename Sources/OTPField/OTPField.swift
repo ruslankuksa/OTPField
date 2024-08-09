@@ -30,7 +30,6 @@ public struct OTPFieldView: View {
                     .keyboardType(.numberPad)
                     .onChange(of: otpCode) { _ in
                         handleInput()
-                        debugPrint(otpCode)
                     }
                 
                 HStack(spacing: spacing) {
