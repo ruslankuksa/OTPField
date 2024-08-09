@@ -10,9 +10,9 @@ public struct OTPFieldView: View {
         case underline
     }
     
-    var otpLength = 6
-    var spacing: CGFloat = 16
-    @Binding var otpCode: String
+    public var otpLength = 6
+    public var spacing: CGFloat = 16
+    @Binding public var otpCode: String
     @FocusState private var focus: Bool
     
     public var body: some View {
