@@ -37,16 +37,17 @@ public struct OTPFieldView: View {
                         ZStack {
                             Rectangle()
                                 .strokeBorder(Color.black, lineWidth: 1)
-                                .frame(width: 40, height: 40)
+                                .aspectRatio(1.0, contentMode: .fit)
                             
                             text(for: index)
+                                .font(.title3)
+                                .fontWeight(.semibold)
                         }
                     }
                 }
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal)
         .onAppear {
             focus = true
         }
@@ -74,3 +75,18 @@ public struct OTPFieldView: View {
         // TODO: - Add different styles
     }
 }
+
+
+//#Preview {
+//    struct WrapperView: View {
+//        @State private var code = ""
+//        
+//        var body: some View {
+//            NavigationStack {
+//                OTPFieldView(otpCode: $code)
+//                    .padding(.horizontal)
+//            }
+//        }
+//    }
+//    return WrapperView()
+//}
